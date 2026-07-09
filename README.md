@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">RemotePKJobs</h1>
 <p align="center"><em>by Zef Technology</em></p>
-# RemotePKJobs 
+
 
 A full-stack web platform for remote developers in Pakistan and South Asia to browse remote jobs, estimate actual take-home pay after platform fees, and find self-hosted alternatives to expensive SaaS tools.
 

@@ -1,145 +1,114 @@
 # RemotePKJobs
 
-A full-stack web platform for remote developers — especially in Pakistan and South Asia — to browse remote jobs, estimate real take-home pay after platform fees, and discover self-hosted alternatives to expensive SaaS tools.
+A full-stack web platform for remote developers in Pakistan and South Asia to browse remote jobs, estimate actual take-home pay after platform fees, and find self-hosted alternatives to expensive SaaS tools.
 
-**Portfolio project** — built as a production-style Laravel application with Python automation agents, SEO tooling, and an admin panel.
-
----
-
-## What it does
-
-| Feature | Description |
-|--------|-------------|
-| **Job board** | Aggregates remote dev roles from RemoteOK, Himalayas, and Arbeitnow via a Python scraper agent |
-| **Fee calculator** | Live take-home estimates for Upwork, Fiverr, and Toptal with Payoneer, Wise, or local bank payouts |
-| **Salary snapshots** | Average monthly pay by stack and country over time |
-| **Tools directory** | Self-hosted alternatives to Pusher, Mailgun, Heroku, Datadog, and more — with GitHub stats |
-| **Blog** | SEO-focused articles with automated hero image generation |
-| **Admin panel** | Password-protected blog CMS at `/admin` |
+This is a **portfolio project** built as a production-ready Laravel application, backed by Python automation agents, built-in SEO tooling, and a custom admin panel.
 
 ---
 
-## Tech stack
+## Features
 
-**Backend**
-- Laravel 12 (PHP 8.2+)
-- MySQL / SQLite
-- Redis (queues & cache)
-- Laravel Telescope & Debugbar (dev)
-
-**Frontend**
-- Blade templates
-- Tailwind CSS 4
-- Alpine.js
-- Chart.js
-- Vite 7
-
-**Automation**
-- Python 3.11+ agents for job scraping, exchange rates, platform fees, GitHub stats, and blog generation
-- Internal REST API secured with `X-Internal-Token`
+* **Job Board:** Pulls remote dev roles from RemoteOK, Himalayas, and Arbeitnow using a custom Python scraper.
+* **Fee Calculator:** Live take-home estimates for Upwork, Fiverr, and Toptal, factoring in Payoneer, Wise, or local bank payout rates.
+* **Salary Snapshots:** Tracks and displays average monthly pay trends by tech stack and country over time.
+* **SaaS Alternatives Directory:** Curated self-hosted alternatives to tools like Pusher, Mailgun, Heroku, and Datadog, complete with live GitHub stats.
+* **Blog:** SEO-optimized articles featuring automated hero image generation.
+* **Admin Panel:** A protected CMS for managing blog posts at `/admin`.
 
 ---
 
-## Project structure
+## Tech Stack
 
-```
-app/           Laravel controllers, models, services
-python/        Automation agents (job_scraper, rate_updater, blog_generator, etc.)
-resources/     Blade views, CSS, JS
-database/      Migrations and seeders (demo data included)
-routes/        Web, API, and admin routes
-scripts/       Local scheduler helpers
-```
+* **Backend:** Laravel 12 (PHP 8.2+), MySQL / SQLite, Redis (for queues & caching), Laravel Telescope & Debugbar (dev mode)
+* **Frontend:** Blade templates, Tailwind CSS 4, Alpine.js, Chart.js, Vite 7
+* **Automation & Scripts:** Python 3.11+ agents handling job scraping, exchange rates, fee calculations, GitHub stats, and automated blog content.
+* **Security:** Internal REST API endpoints secured with a custom `X-Internal-Token`.
 
 ---
 
-## Local setup
+## Project Structure
+app/          # Laravel controllers, models, and services
+python/       # Automation agents (job_scraper, rate_updater, blog_generator, etc.)
+resources/    # Blade views, CSS, and JS components
+database/     # Migrations and seeders (includes demo data)
+routes/       # Web, API, and admin routing
+scripts/      # Local scheduler and helper scripts
 
-### Requirements
+---
+## Screenshots
+<img width="1366" height="1492" alt="Image" src="https://github.com/user-attachments/assets/fc7f6ca6-5923-48c1-a662-1c482cbb6029" />
 
-- PHP 8.2+, Composer
-- Node.js 18+, npm
-- MySQL or SQLite
-- Python 3.11+ (optional — for running agents locally)
+<img width="1366" height="1816" alt="Image" src="https://github.com/user-attachments/assets/3aee504c-e70c-4193-9de4-e8ba8d7a9059" />
 
-### Quick start
+<img width="1366" height="2224" alt="Image" src="https://github.com/user-attachments/assets/635c6cd3-359b-4702-86f9-e701ad6d1f37" />
 
-```bash
+<img width="1366" height="1072" alt="Image" src="https://github.com/user-attachments/assets/589024b2-2cb7-4e64-b2bd-438adae5d101" />
+
+<img width="1366" height="2042" alt="Image" src="https://github.com/user-attachments/assets/242d6c06-fea7-402e-bde7-33be1e4d521c" />
+---
+## Local Setup
+
+### Prerequisites
+* PHP 8.2+ & Composer
+* Node.js 18+ & npm
+* MySQL or SQLite
+* Python 3.11+ *(optional, only needed to run agents locally)*
+
+### Quick Start
+
+
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/remotepkjobs.git
+git clone [https://github.com/YOUR_USERNAME/remotepkjobs.git](https://github.com/YOUR_USERNAME/remotepkjobs.git)
 cd remotepkjobs
 
-# PHP dependencies
+# Install PHP dependencies & set up environment
 composer install
 cp .env.example .env
 php artisan key:generate
 
-# Database (SQLite works for local demo)
+# Set up database (SQLite works best for a quick local demo)
 touch database/database.sqlite
-# Set DB_CONNECTION=sqlite in .env, then:
+# Note: Set DB_CONNECTION=sqlite in your .env before running migrations
 php artisan migrate --seed
 
-# Frontend
+# Install frontend assets
 npm install
 npm run build
 
-# Run the app
+# Start the local server
 php artisan serve
-```
+Open http://127.0.0.1:8000 in your browser.
 
-Visit `http://127.0.0.1:8000`.
-
-### Full dev environment (with Vite hot reload)
-
-```bash
+Full Dev Environment (with Vite Hot Reload)
 composer run dev
-```
+This runs the Laravel server, queue worker, log tail, and Vite dev server simultaneously.
 
-This starts the Laravel server, queue worker, log tail, and Vite dev server together.
-
-### Python agents (optional)
-
-```bash
+Running Python Agents Locally (Optional)
 cd python
 python -m venv venv
-# Windows: venv\Scripts\activate
-# Linux/Mac: source venv/bin/activate
+# On Windows: venv\Scripts\activate
+# On Linux/Mac: source venv/bin/activate
 pip install -r requirements.txt
 
-# Set INTERNAL_API_TOKEN in .env, then from project root:
+# Make sure INTERNAL_API_TOKEN is set in your .env, then run from the project root:
 php artisan agent:run job_scraper
 php artisan agent:run update_exchange_rates
-```
+Environment Variables
+Copy .env.example to .env and configure the following key variables:
 
----
+INTERNAL_API_TOKEN: Shared secret key used by Python agents to authenticate with the Laravel API.
 
-## Environment variables
+ADMIN_PASSWORD: Password for accessing the admin panel.
 
-Copy `.env.example` to `.env`. Key values:
+GITHUB_TOKEN: Personal access token to fetch stats for the SaaS alternatives directory.
 
-| Variable | Purpose |
-|----------|---------|
-| `INTERNAL_API_TOKEN` | Shared secret for Python agents → Laravel API |
-| `ADMIN_PASSWORD` | Admin panel login password |
-| `GITHUB_TOKEN` | GitHub API token for alternatives stats updater |
-| `EXCHANGE_RATE_API_URL` | Live FX rates endpoint |
+EXCHANGE_RATE_API_URL: Endpoint used for fetching live FX rates.
 
-Never commit `.env` or real API keys.
+Note: Never commit your actual .env file or production API keys to GitHub.
 
----
+Screenshots
+Deployment
+For a production setup on Ubuntu 22.04 using Nginx, MySQL, Redis, Supervisor, and Cron, check out DEPLOY.md.
 
-## Screenshots
-
-_Add 2–3 screenshots here before publishing (home page, calculator, jobs list) — recruiters love visuals._
-
----
-
-## Deployment
-
-See [DEPLOY.md](DEPLOY.md) for Ubuntu 22.04 production setup with Nginx, MySQL, Redis, Supervisor, and cron.
-
----
-
-## License
-
-MIT — portfolio use. Job listings are aggregated from public APIs; respect each source's terms of use if you deploy publicly.
+License
+MIT. Feel free to use this for your portfolio. Job listings are aggregated from public APIs; please respect each source's terms of use if you host this publicly.

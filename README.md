@@ -1,4 +1,9 @@
-# RemotePKJobs
+<p align="center">
+  <img width="180" height="42" alt="Image" src="https://github.com/user-attachments/assets/4761bbe5-cf0d-40a8-bc57-5a65ad167a53" />
+</p>
+<h1 align="center">RemotePKJobs</h1>
+<p align="center"><em>by Zef Technology</em></p>
+# RemotePKJobs 
 
 A full-stack web platform for remote developers in Pakistan and South Asia to browse remote jobs, estimate actual take-home pay after platform fees, and find self-hosted alternatives to expensive SaaS tools.
 

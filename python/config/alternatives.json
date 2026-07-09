@@ -1,0 +1,52 @@
+[
+  {
+    "paid_tool": "Pusher",
+    "repo": "soketi/soketi",
+    "monthly_cost_paid": 49
+  },
+  {
+    "paid_tool": "Mailgun",
+    "repo": "postalserver/postal",
+    "monthly_cost_paid": 35
+  },
+  {
+    "paid_tool": "PlanetScale",
+    "repo": "vitessio/vitess",
+    "monthly_cost_paid": 29
+  },
+  {
+    "paid_tool": "Heroku",
+    "repo": "coollabsio/coolify",
+    "monthly_cost_paid": 25
+  },
+  {
+    "paid_tool": "Datadog",
+    "repo": "SigNoz/signoz",
+    "monthly_cost_paid": 20
+  },
+  {
+    "paid_tool": "Amazon SQS",
+    "repo": "laravel/horizon",
+    "monthly_cost_paid": 15
+  },
+  {
+    "paid_tool": "Algolia",
+    "repo": "typesense/typesense",
+    "monthly_cost_paid": 30
+  },
+  {
+    "paid_tool": "SendGrid",
+    "repo": "listmonk/listmonk",
+    "monthly_cost_paid": 25
+  },
+  {
+    "paid_tool": "Auth0",
+    "repo": "keycloak/keycloak",
+    "monthly_cost_paid": 20
+  },
+  {
+    "paid_tool": "AWS S3",
+    "repo": "minio/minio",
+    "monthly_cost_paid": 15
+  }
+]
